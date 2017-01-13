@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>BLOG</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-3">
+            <form name="add-post-form" class="card card-block" novalidate>
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <button type="button" class="btn btn-primary">add</button>
+            </form>
+        </div>
+        <div class="col-9">
+            <div class="post-container"></div>
+        </div>
+    </div>
+</div>
+
+<script id="post-list-tpl" type="text/x-handlebars-template">
+    <div id="comments">
+        {{#each posts}}
+        <div>{{title}}</div>
+        <div>{{description}}</div>
+        <ul>
+            {{#each comments}}
+            <li>{{hello}}</li>
+            {{/each}}
+        </ul>
+        {{/each}}
+    </div>
+</script>
+
+<script src="src/init.js"></script>
+<script src="src/tools/validate.js"></script>
+<script src="src/models.js"></script>
+<script src="src/service.js"></script>
+<script src="src/view.js"></script>
+<script src="src/main.js"></script>
+
+</body>
+</html>
