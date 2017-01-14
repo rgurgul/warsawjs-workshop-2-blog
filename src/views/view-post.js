@@ -1,6 +1,6 @@
 (function (app) {
 
-    class ViewPost extends app.ViewBase {
+    class ViewPost extends app.views.ViewBase {
         constructor() {
             super();
             this.tpl = document.querySelector("#post-tpl");
@@ -16,11 +16,11 @@
 
             this.btnAddComment.addEventListener('click', () => {
                 post.comments.push({msg: this.newComment.value});
-                app.postsService.addComment(post);
+                app.services.postsService.addComment(post);
             });
         }
     }
 
-    app.viewPost = new ViewPost();
+    app.views.viewPost = new ViewPost();
 
 })(App);

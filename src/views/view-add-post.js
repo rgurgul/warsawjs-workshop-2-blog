@@ -1,19 +1,22 @@
 (function (app) {
 
+    let postsService = app.services.postsService;
+    let Validate = app.Validate;
+
     class AddNewPost {
         constructor() {
             let addPostForm = document.forms['add-post-form'];
             let btnAdd = addPostForm.querySelector('button');
-            let validator = new app.Validate(addPostForm);
+            let validator = new Validate(addPostForm);
 
             btnAdd.addEventListener('click', () => {
                 validator.checkForm((data) => {
-                    app.postsService.add(data);
+                    postsService.add(data);
                 });
             });
         }
     }
 
-    app.AddNewPost = new AddNewPost();
+    app.views.AddNewPost = new AddNewPost();
 
 })(App);

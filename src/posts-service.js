@@ -14,17 +14,17 @@
             let post = new app.Post(data);
             post.id = parseInt(Math.random() * 10000);
             this.posts.push(post);
-            this.save(app.viewList.refresh);
+            this.save(app.views.viewList.refresh);
         }
 
         remove(id) {
             this.posts.splice(this.findById(id), 1);
-            this.save(app.viewList.refresh);
+            this.save(app.views.viewList.refresh);
         }
 
         save(callback) {
             localStorage.setItem('posts', JSON.stringify(this.posts));
-            callback && callback.call(app.viewList);
+            callback && callback.call(app.views.viewList);
         }
 
         findById(id) {
@@ -39,9 +39,9 @@
         }
 
         addComment(post) {
-            app.viewPost.show(post);
+            app.views.viewPost.show(post);
             this.save();
         }
     }
-    app.postsService = new PostsService();
+    app.services.postsService = new PostsService();
 })(App);

@@ -1,14 +1,15 @@
-
 (function (app) {
 
-    let viewPost = app.viewPost;
-    let viewList = app.viewList;
+    let viewPost = app.views.viewPost;
+    let viewList = app.views.viewList;
+    let postsService = app.services.postsService;
+    let Helpers = app.Helpers;
 
     window.addEventListener('hashchange', function (evt) {
-        let id = app.Helpers.getHash(evt.newURL);
+        let id = Helpers.getHash(evt.newURL);
         if (id) {
             viewList.clearContainer();
-            let post = app.postsService.getPost(id);
+            let post = postsService.getPost(id);
             viewPost.show(post);
         }
     });

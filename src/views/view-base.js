@@ -7,5 +7,5 @@
         }
     }
 
-    app.ViewBase = ViewBase;
+    app.views.ViewBase = ViewBase;
 })(App);

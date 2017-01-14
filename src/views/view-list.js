@@ -1,17 +1,17 @@
 (function (app) {
 
-    class ViewList extends app.ViewBase {
+    class ViewList extends app.views.ViewBase {
         constructor() {
             super();
 
-            this.posts = app.postsService.fetch();
+            this.posts = app.services.postsService.fetch();
             this.tpl = document.querySelector("#post-list-tpl");
             this.container = document.querySelector('.post-container');
 
             this.container.addEventListener('click', (evt) => {
                 let el = evt.target;
                 if (/BUTTON/.test(el.tagName) && el.className.includes('btn-remove')) {
-                    app.postsService.remove(el.getAttribute('data-id'));
+                    app.services.postsService.remove(el.getAttribute('data-id'));
                 }
             });
 
@@ -28,6 +28,6 @@
         }
     }
 
-    app.viewList = new ViewList();
+    app.views.viewList = new ViewList();
 
 })(App);
