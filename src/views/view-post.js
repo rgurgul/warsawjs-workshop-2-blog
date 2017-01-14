@@ -15,8 +15,13 @@
             this.newComment = this.container.querySelector('.new-comment');
 
             this.btnAddComment.addEventListener('click', () => {
-                post.comments.push({msg: this.newComment.value});
-                app.services.postsService.addComment(post);
+                /*post.comments.push({msg: this.newComment.value});
+                 app.services.postsService.addComment(post);*/
+                let comment = this.newComment.value;
+                document.dispatchEvent(new CustomEvent(
+                    'add-comment',
+                    {detail: {post, comment}}
+                ))
             });
         }
     }

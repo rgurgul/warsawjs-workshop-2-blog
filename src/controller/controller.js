@@ -24,8 +24,16 @@
                 this.remove(id);
             });
 
+            document.addEventListener('add-comment', (evt) => {
+                let post = evt.detail.post;
+                let comment = evt.detail.comment;
+                post.addComment(comment);
+                postsService.save(viewPost.show(post));
+            });
+
             window.addEventListener('hashchange', (evt) => {
-                this.getPostById(evt.newURL);
+                let id = Helpers.getHash(evt.newURL);
+                this.getPostById(parseInt(id));
             });
         }
 
@@ -33,10 +41,9 @@
             postsService.fetch(viewList.refresh.bind(viewList));
         }
 
-        getPostById(url) {
-            let id = Helpers.getHash(url);
+        getPostById(id) {
             if (id) {
-                let post = postsService.getPostById(id);
+                let post = new Post(postsService.getPostById(id));
                 viewPost.show(post);
             }
         }

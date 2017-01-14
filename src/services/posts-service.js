@@ -28,18 +28,13 @@
 
         findById(id) {
             let item = this.posts.find(function (obj) {
-                return obj.id == id;
+                return obj.id === id;
             });
             return this.posts.indexOf(item);
         }
 
         getPostById(id) {
             return this.posts[this.findById(id)];
-        }
-
-        addComment(post) {
-            viewPost.show(post);
-            this.save();
         }
     }
     app.services.PostsService = PostsService;
