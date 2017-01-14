@@ -72,6 +72,7 @@
             this.formIsValid = false;
             let err = document.createElement('small');
             err.style.color = 'red';
+            err.style.fontWeight = 'bold';
             err.textContent = el.getAttribute('err') || 'pole wymagane';
             el.parentNode.appendChild(err);
         };

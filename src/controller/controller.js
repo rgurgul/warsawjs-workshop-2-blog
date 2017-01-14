@@ -1,6 +1,7 @@
 (function (app) {
 
     let Post = app.models.Post;
+    let Comment = app.models.Comment;
     let postsService = new app.services.PostsService();
     let viewList = new app.views.ViewPostList();
     let viewPost = new app.views.ViewPost();
@@ -26,7 +27,7 @@
 
             document.addEventListener('add-comment', (evt) => {
                 let post = evt.detail.post;
-                let comment = evt.detail.comment;
+                let comment = new Comment(evt.detail.comment);
                 post.addComment(comment);
                 postsService.save(viewPost.show(post));
             });

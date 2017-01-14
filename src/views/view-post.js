@@ -1,6 +1,9 @@
 (function (app) {
 
+    let Validate = app.Validate;
+
     class ViewPost extends app.views.ViewBase {
+
         constructor() {
             super();
             this.tpl = document.querySelector("#view-post-tpl");
@@ -9,10 +12,16 @@
 
         show(post) {
             this.render(post, this.tpl.innerHTML, this.container);
-            this.newComment = this.container.querySelector('.new-comment');
-            this.btnAddComment = this.container.querySelector('.btn-add-comment');
-            this.btnAddComment.addEventListener('click', () => {
-                this.addComment(post, this.newComment.value);
+
+            let btnAddComment = this.container.querySelector('.btn-add-comment');
+            let form = document.forms['add-comment-form'];
+
+            let validator = new Validate(form);
+
+            btnAddComment.addEventListener('click', () => {
+                validator.checkForm((data) => {
+                    this.addComment(post, data);
+                });
             });
         }
 

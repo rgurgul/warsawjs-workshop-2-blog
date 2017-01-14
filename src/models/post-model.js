@@ -2,7 +2,7 @@
 
     class Comment {
         constructor(comment) {
-            this.msg = comment;
+            this.msg = comment.msg;
         }
     }
 
@@ -20,5 +20,6 @@
     }
 
     app.models.Post = Post;
+    app.models.Comment = Comment;
 
 })(App);
