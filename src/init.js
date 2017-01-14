@@ -5,5 +5,6 @@ let App = {};
     app.views = {};
     app.services = {};
     app.models = {};
+    app.controllers = {};
 
 })(App);

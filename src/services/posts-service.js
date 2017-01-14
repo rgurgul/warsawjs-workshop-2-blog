@@ -1,8 +1,9 @@
 (function (app) {
 
-    let Post = app.models.Post;
+    /*let Post = app.models.Post;
     let viewList = app.views.viewList;
-    let viewPost = app.views.viewPost;
+    let viewPost = app.views.viewPost;*/
+
 
     class PostsService {
 
@@ -15,11 +16,9 @@
             return {posts: this.posts};
         }
 
-        add(data) {
-            let post = new Post(data);
-            post.id = parseInt(Math.random() * 10000);
+        add(post, callback) {
             this.posts.push(post);
-            this.save(viewList.refresh);
+            this.save(callback);
         }
 
         remove(id) {
@@ -29,7 +28,7 @@
 
         save(callback) {
             localStorage.setItem('posts', JSON.stringify(this.posts));
-            callback && callback.call(viewList);
+            callback && callback();
         }
 
         findById(id) {

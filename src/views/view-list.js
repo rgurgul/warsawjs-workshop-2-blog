@@ -23,7 +23,6 @@
         }
 
         clearContainer(){
-            //this.container.classList.add('hidden-xs-up');
             this.container.innerHTML = '';
         }
     }

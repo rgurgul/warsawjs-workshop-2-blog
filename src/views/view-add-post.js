@@ -1,6 +1,5 @@
 (function (app) {
 
-    let postsService = app.services.postsService;
     let Validate = app.Validate;
 
     class AddNewPost {
@@ -11,7 +10,11 @@
 
             btnAdd.addEventListener('click', () => {
                 validator.checkForm((data) => {
-                    postsService.add(data);
+                    document.dispatchEvent(
+                        new CustomEvent('add-post', {
+                            detail: data
+                        })
+                    );
                 });
             });
         }
