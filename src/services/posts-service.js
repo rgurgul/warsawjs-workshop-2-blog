@@ -49,5 +49,7 @@
             return this.posts[this.findById(id)];
         }
     }
+
     app.services.PostsService = PostsService;
+
 })(App);

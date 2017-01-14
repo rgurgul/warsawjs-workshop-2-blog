@@ -7,7 +7,7 @@
             super();
 
             this.tpl = document.querySelector("#view-post-list-tpl");
-            this.container = document.querySelector('.post-container');
+            this.container = document.querySelector('.main-container');
 
             this.container.addEventListener('click', (evt) => {
                 let el = evt.target;

@@ -1,4 +1,5 @@
 (function (app) {
+
     class Helpers {
         static getHash(str) {
             let divided = str.split('#');
@@ -7,4 +8,5 @@
     }
 
     app.Helpers = Helpers;
+
 })(App);

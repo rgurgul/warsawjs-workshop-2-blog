@@ -77,7 +77,6 @@
         };
     }
 
-
     app.Validate = Validate;
 
 })(App);

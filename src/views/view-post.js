@@ -4,13 +4,13 @@
         constructor() {
             super();
             this.tpl = document.querySelector("#view-post-tpl");
-            this.container = document.querySelector('.post-container');
+            this.container = document.querySelector('.main-container');
         }
 
         show(post) {
             this.render(post, this.tpl.innerHTML, this.container);
-            this.btnAddComment = this.container.querySelector('.btn-add-comment');
             this.newComment = this.container.querySelector('.new-comment');
+            this.btnAddComment = this.container.querySelector('.btn-add-comment');
             this.btnAddComment.addEventListener('click', () => {
                 this.addComment(post, this.newComment.value);
             });
