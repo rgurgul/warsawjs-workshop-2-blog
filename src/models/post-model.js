@@ -1,7 +1,7 @@
 (function (app) {
 
     class Comment {
-        constructor(comment){
+        constructor(comment) {
             this.msg = comment;
         }
     }
@@ -14,9 +14,11 @@
             this.comments = post.comments || [];
         }
 
-        addComment(comment){
+        addComment(comment) {
             this.comments.push(new Comment(comment));
         }
     }
+
     app.models.Post = Post;
+
 })(App);

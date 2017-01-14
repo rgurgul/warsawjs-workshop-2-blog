@@ -17,7 +17,8 @@
         }
 
         remove(id, callback) {
-            this.posts.splice(this.findById(id), 1);
+            let post = this.findById(id);
+            this.posts.splice(post, 1);
             this.save(callback);
         }
 
@@ -28,7 +29,7 @@
 
         findById(id) {
             let item = this.posts.find(function (obj) {
-                return obj.id === id;
+                return obj.id === parseInt(id);
             });
             return this.posts.indexOf(item);
         }
