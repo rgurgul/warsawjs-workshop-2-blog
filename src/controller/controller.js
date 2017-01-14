@@ -10,18 +10,18 @@
     class PostsController {
         constructor() {
 
-            this.fetch();
+            this.fetchPosts();
 
             new ViewAddPostForm();
 
             document.addEventListener('add-post', (evt) => {
                 let data = evt.detail;
-                this.add(data);
+                this.addPost(data);
             });
 
             document.addEventListener('remove-post', (evt) => {
                 let id = evt.detail;
-                this.remove(id);
+                this.removePost(id);
             });
 
             document.addEventListener('add-comment', (evt) => {
@@ -37,7 +37,7 @@
             });
         }
 
-        fetch() {
+        fetchPosts() {
             postsService.fetch(viewList.refresh.bind(viewList));
         }
 
@@ -48,17 +48,17 @@
             }
         }
 
-        remove(id) {
+        removePost(id) {
             postsService.remove(id, () => {
-                this.fetch();
+                this.fetchPosts();
             });
         }
 
-        add(data) {
+        addPost(data) {
             let id = parseInt(Math.random() * 10000);
             let post = new Post(Object.assign(data, {id}));
             postsService.add(post, () => {
-                this.fetch();
+                this.fetchPosts();
             });
         }
     }

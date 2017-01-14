@@ -41,10 +41,16 @@
 </script>
 
 <script id="post-tpl" type="text/x-handlebars-template">
-    <div>{{title}}</div>
-    <div>{{description}}</div>
+
+    <div class="card ">
+        <div class="card-block">
+            <a href="/" class="btn btn-primary btn-sm btn-go-posts-list">back</a>
+            <h2>{{title}}</h2>
+            <h5>{{description}}</h5>
+        </div>
+    </div>
     <div class="card card-block">
-        <a href="/" class="btn btn-primary btn-sm btn-go-posts-list">back</a>
+        <h5>comments</h5>
         <ul>
             {{#each comments}}
             <li>{{msg}}</li>
@@ -54,7 +60,7 @@
             <div class="form-group">
                 <textarea class="form-control new-comment"
                           required
-                          placeholder="your msg hire"></textarea>
+                          placeholder="add comment"></textarea>
             </div>
             <button type="button" class="btn btn-success btn-add-comment">add comment</button>
         </form>
