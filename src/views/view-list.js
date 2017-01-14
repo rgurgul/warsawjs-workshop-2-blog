@@ -4,14 +4,14 @@
         constructor() {
             super();
 
-            this.posts = app.postService.fetch();
+            this.posts = app.postsService.fetch();
             this.tpl = document.querySelector("#post-list-tpl");
             this.container = document.querySelector('.post-container');
 
             this.container.addEventListener('click', (evt) => {
                 let el = evt.target;
                 if (/BUTTON/.test(el.tagName) && el.className.includes('btn-remove')) {
-                    app.postService.remove(el.getAttribute('data-id'));
+                    app.postsService.remove(el.getAttribute('data-id'));
                 }
             });
 

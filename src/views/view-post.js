@@ -16,7 +16,7 @@
 
             this.btnAddComment.addEventListener('click', () => {
                 post.comments.push({msg: this.newComment.value});
-                app.postService.addComment(post);
+                app.postsService.addComment(post);
             });
         }
     }

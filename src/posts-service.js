@@ -1,5 +1,5 @@
 (function (app) {
-    class PostService {
+    class PostsService {
 
         constructor() {
             this.posts = [];
@@ -43,5 +43,5 @@
             this.save();
         }
     }
-    app.postService = new PostService();
+    app.postsService = new PostsService();
 })(App);

@@ -8,7 +8,7 @@
 
             btnAdd.addEventListener('click', () => {
                 validator.checkForm((data) => {
-                    app.postService.add(data);
+                    app.postsService.add(data);
                 });
             });
         }
