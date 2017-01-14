@@ -4,5 +4,6 @@ let App = {};
 
     app.views = {};
     app.services = {};
+    app.models = {};
 
 })(App);

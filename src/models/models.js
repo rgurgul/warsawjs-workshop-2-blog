@@ -7,5 +7,5 @@
             this.comments = [];
         }
     }
-    app.Post = Post;
+    app.models.Post = Post;
 })(App);

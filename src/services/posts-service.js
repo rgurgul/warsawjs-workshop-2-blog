@@ -1,4 +1,9 @@
 (function (app) {
+
+    let Post = app.models.Post;
+    let viewList = app.views.viewList;
+    let viewPost = app.views.viewPost;
+
     class PostsService {
 
         constructor() {
@@ -11,20 +16,20 @@
         }
 
         add(data) {
-            let post = new app.Post(data);
+            let post = new Post(data);
             post.id = parseInt(Math.random() * 10000);
             this.posts.push(post);
-            this.save(app.views.viewList.refresh);
+            this.save(viewList.refresh);
         }
 
         remove(id) {
             this.posts.splice(this.findById(id), 1);
-            this.save(app.views.viewList.refresh);
+            this.save(viewList.refresh);
         }
 
         save(callback) {
             localStorage.setItem('posts', JSON.stringify(this.posts));
-            callback && callback.call(app.views.viewList);
+            callback && callback.call(viewList);
         }
 
         findById(id) {
@@ -39,7 +44,7 @@
         }
 
         addComment(post) {
-            app.views.viewPost.show(post);
+            viewPost.show(post);
             this.save();
         }
     }
