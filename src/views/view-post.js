@@ -21,6 +21,6 @@
         }
     }
 
-    app.views.viewPost = new ViewPost();
+    app.views.ViewPost = ViewPost;
 
 })(App);

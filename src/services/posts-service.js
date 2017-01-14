@@ -33,7 +33,7 @@
             return this.posts.indexOf(item);
         }
 
-        getPost(id) {
+        getPostById(id) {
             return this.posts[this.findById(id)];
         }
 
@@ -42,5 +42,5 @@
             this.save();
         }
     }
-    app.services.postsService = new PostsService();
+    app.services.PostsService = PostsService;
 })(App);

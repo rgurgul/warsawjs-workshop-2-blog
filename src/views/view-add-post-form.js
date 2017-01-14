@@ -2,7 +2,7 @@
 
     let Validate = app.Validate;
 
-    class AddNewPost {
+    class ViewAddPostForm {
         constructor() {
             let addPostForm = document.forms['add-post-form'];
             let btnAdd = addPostForm.querySelector('button');
@@ -20,6 +20,6 @@
         }
     }
 
-    app.views.AddNewPost = new AddNewPost();
+    app.views.ViewAddPostForm = ViewAddPostForm;
 
 })(App);

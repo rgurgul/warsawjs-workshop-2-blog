@@ -1,13 +1,18 @@
 (function (app) {
 
     let Post = app.models.Post;
-    let postsService = app.services.postsService;
+    let postsService = new app.services.PostsService();
     let viewList = new app.views.ViewList();
+    let viewPost = new app.views.ViewPost();
+    let ViewAddPostForm = app.views.ViewAddPostForm;
+    let Helpers = app.Helpers;
 
     class PostsController {
         constructor() {
 
-            postsService.fetch(viewList.refresh.bind(viewList));
+            this.fetch();
+
+            new ViewAddPostForm();
 
             document.addEventListener('add-post', (evt) => {
                 let data = evt.detail;
@@ -18,11 +23,27 @@
                 let id = evt.detail;
                 this.remove(id);
             });
+
+            window.addEventListener('hashchange', (evt) => {
+                this.getPostById(evt.newURL);
+            });
+        }
+
+        fetch() {
+            postsService.fetch(viewList.refresh.bind(viewList));
+        }
+
+        getPostById(url) {
+            let id = Helpers.getHash(url);
+            if (id) {
+                let post = postsService.getPostById(id);
+                viewPost.show(post);
+            }
         }
 
         remove(id) {
             postsService.remove(id, () => {
-                postsService.fetch(viewList.refresh.bind(viewList));
+                this.fetch();
             });
         }
 
@@ -30,7 +51,7 @@
             let id = parseInt(Math.random() * 10000);
             let post = new Post(Object.assign(data, {id}));
             postsService.add(post, () => {
-                postsService.fetch(viewList.refresh.bind(viewList));
+                this.fetch();
             });
         }
     }
