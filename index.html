@@ -11,46 +11,57 @@
 
 <div class="container-fluid">
     <div class="row mt-3">
-        <div class="col-3">
-            <form name="add-post-form" class="card card-block" novalidate>
-                <div class="form-group">
-                    <input type="text" name="title" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="description" class="form-control" required></textarea>
-                </div>
-                <button type="button" class="btn btn-primary">add</button>
-            </form>
+        <div class="col-5">
+            <div class="card">
+                <h4 class="card-header">ADD POST</h4>
+                <form name="add-post-form" class="card-block" novalidate>
+                    <div class="form-group">
+                        <input type="text" placeholder="post title" name="title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="8" name="description" placeholder="post description" class="form-control" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary">add</button>
+                </form>
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col-7">
             <div class="post-container"></div>
         </div>
     </div>
 </div>
 
-<script id="post-list-tpl" type="text/x-handlebars-template">
+<script id="view-post-list-tpl" type="text/x-handlebars-template">
 
-    {{#each posts}}
-    <div class="card card-block">
-        <a href="#{{id}}">{{title}}</a>
-        <div>{{description}}</div>
-        <button class="btn btn-danger btn-remove" data-id="{{id}}">remove</button>
+    <div class="card">
+        <h4 class="card-header">POST LIST</h4>
+        <div class="card-block">
+            {{#each posts}}
+            <div class="card mb-3">
+                <div class="card-block">
+                    <h3>{{title}}</h3>
+                    <div>{{description}}</div>
+                    <a class="btn btn-sm btn-primary" href="#{{id}}">more</a>
+                    <button class="btn btn-danger btn-sm btn-remove" data-id="{{id}}">remove</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
-    {{/each}}
 
 </script>
 
-<script id="post-tpl" type="text/x-handlebars-template">
+<script id="view-post-tpl" type="text/x-handlebars-template">
 
-    <div class="card ">
+    <div class="card mb-3">
         <div class="card-block">
             <a href="/" class="btn btn-primary btn-sm btn-go-posts-list">back</a>
-            <h2>{{title}}</h2>
-            <h5>{{description}}</h5>
+            <h4>{{title}}</h4>
+            <div>{{description}}</div>
         </div>
     </div>
     <div class="card card-block">
-        <h5>comments</h5>
+        <h5 class="card-title">comments</h5>
         <ul>
             {{#each comments}}
             <li>{{msg}}</li>
@@ -62,7 +73,7 @@
                           required
                           placeholder="add comment"></textarea>
             </div>
-            <button type="button" class="btn btn-success btn-add-comment">add comment</button>
+            <button type="button" class="btn btn-success btn-sm btn-add-comment">add comment</button>
         </form>
     </div>
 </script>
@@ -71,10 +82,11 @@
 <script src="src/tools/validate.js"></script>
 <script src="src/tools/helpers.js"></script>
 <script src="src/models/post-model.js"></script>
+<script src="src/services/ajax-service.js"></script>
 <script src="src/services/posts-service.js"></script>
 <script src="src/views/view-base.js"></script>
 <script src="src/views/view-add-post-form.js"></script>
-<script src="src/views/view-list.js"></script>
+<script src="src/views/view-post-list.js"></script>
 <script src="src/views/view-post.js"></script>
 <script src="src/controller/controller.js"></script>
 <script src="src/main.js"></script>

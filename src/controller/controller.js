@@ -2,7 +2,7 @@
 
     let Post = app.models.Post;
     let postsService = new app.services.PostsService();
-    let viewList = new app.views.ViewList();
+    let viewList = new app.views.ViewPostList();
     let viewPost = new app.views.ViewPost();
     let ViewAddPostForm = app.views.ViewAddPostForm;
     let Helpers = app.Helpers;

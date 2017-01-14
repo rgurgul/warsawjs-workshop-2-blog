@@ -1,5 +1,7 @@
 (function (app) {
 
+    //let ajaxService = new app.services.AjaxService('http://localhost:3333');
+
     class PostsService {
 
         constructor() {
@@ -9,6 +11,11 @@
         fetch(callback) {
             this.posts = JSON.parse(localStorage.getItem('posts')) || [];
             callback({posts: this.posts});
+
+            /*ajaxService.do('get', (response) => {
+             this.posts = response || [];
+             callback({posts: this.posts});
+             });*/
         }
 
         add(post, callback) {
@@ -25,6 +32,10 @@
         save(callback) {
             localStorage.setItem('posts', JSON.stringify(this.posts));
             callback && callback();
+
+            /*ajaxService.do('post', () => {
+             callback && callback();
+             }, this.posts);*/
         }
 
         findById(id) {
