@@ -1,19 +1,14 @@
 (function (app) {
 
-    /*let Post = app.models.Post;
-    let viewList = app.views.viewList;
-    let viewPost = app.views.viewPost;*/
-
-
     class PostsService {
 
         constructor() {
             this.posts = [];
         }
 
-        fetch() {
+        fetch(callback) {
             this.posts = JSON.parse(localStorage.getItem('posts')) || [];
-            return {posts: this.posts};
+            callback({posts: this.posts});
         }
 
         add(post, callback) {
@@ -21,9 +16,9 @@
             this.save(callback);
         }
 
-        remove(id) {
+        remove(id, callback) {
             this.posts.splice(this.findById(id), 1);
-            this.save(viewList.refresh);
+            this.save(callback);
         }
 
         save(callback) {

@@ -1,21 +1,37 @@
 (function (app) {
 
     let Post = app.models.Post;
-    let viewList = app.views.viewList;
     let postsService = app.services.postsService;
+    let viewList = new app.views.ViewList();
 
     class PostsController {
-        constructor(){
+        constructor() {
+
+            postsService.fetch(viewList.refresh.bind(viewList));
+
             document.addEventListener('add-post', (evt) => {
                 let data = evt.detail;
-                this.save(data);
+                this.add(data);
+            });
+
+            document.addEventListener('remove-post', (evt) => {
+                let id = evt.detail;
+                this.remove(id);
             });
         }
 
-        save(data){
-            let post = new Post(data);
-            post.id = parseInt(Math.random() * 10000);
-            postsService.add(data, viewList.refresh.bind(viewList));
+        remove(id) {
+            postsService.remove(id, () => {
+                postsService.fetch(viewList.refresh.bind(viewList));
+            });
+        }
+
+        add(data) {
+            let id = parseInt(Math.random() * 10000);
+            let post = new Post(Object.assign(data, {id}));
+            postsService.add(post, () => {
+                postsService.fetch(viewList.refresh.bind(viewList));
+            });
         }
     }
 
