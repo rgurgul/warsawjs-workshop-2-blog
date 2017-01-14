@@ -29,25 +29,39 @@
 </div>
 
 <script id="post-list-tpl" type="text/x-handlebars-template">
-    <div id="comments">
-        {{#each posts}}
-        <div>{{title}}</div>
+
+    {{#each posts}}
+    <div class="card card-block">
+        <a href="#{{id}}">{{title}}</a>
         <div>{{description}}</div>
+        <button class="btn btn-danger btn-remove" data-id="{{id}}">remove</button>
+    </div>
+    {{/each}}
+
+</script>
+
+<script id="post-tpl" type="text/x-handlebars-template">
+    <div>{{title}}</div>
+    <div>{{description}}</div>
+    <button class="btn btn-success btn-add-comment">add comment</button>
+    <div class="card card-block">
         <ul>
             {{#each comments}}
-            <li>{{hello}}</li>
+            <li>{{msg}}</li>
             {{/each}}
         </ul>
-        {{/each}}
     </div>
 </script>
 
 <script src="src/init.js"></script>
 <script src="src/tools/validate.js"></script>
+<script src="src/tools/helpers.js"></script>
 <script src="src/models.js"></script>
-<script src="src/service.js"></script>
-<script src="src/view.js"></script>
-<script src="src/main.js"></script>
+<script src="src/posts-service.js"></script>
+<script src="src/views/view-base.js"></script>
+<script src="src/views/view-add-post.js"></script>
+<script src="src/views/view-list.js"></script>
+<script src="src/views/view-post.js"></script>
 
 </body>
 </html>

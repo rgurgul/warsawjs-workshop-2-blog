@@ -1,35 +1,13 @@
 let App = {};
 
 (function (app) {
-    /*let data = {
-        posts: [
-            {
-                id: 0,
-                title: "first",
-                comments: [
-                    {hello: "Hi"},
-                    {hello: "xxx"}
-                ]
-            },
-            {
-                id: 0,
-                title: "ssss",
-                comments: [
-                    {hello: "aaaaaa"},
-                    {hello: "dsgdsf"},
-                    {hello: "0000000"}
-                ]
-            }
-        ]
-    };
 
-    localStorage.setItem('posts', JSON.stringify(data));
+    window.addEventListener('hashchange', function (evt) {
+        let id = app.Helpers.getHash(evt.newURL);
+        if (id) {
+            app.viewList.hide();
+            app.viewPost.show(app.postService.getPost(id));
+        }
+    });
 
-    let com = document.querySelector("#com").innerHTML;
-    let tpl = Handlebars.compile(com)(JSON.parse(localStorage.getItem('posts')));
-*/
-    /*
-
-    let container = document.querySelector('.post-container');
-    container.innerHTML = tpl;*/
 })(App);
