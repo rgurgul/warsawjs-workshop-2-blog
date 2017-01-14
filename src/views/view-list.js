@@ -22,8 +22,9 @@
             this.render(this.posts, this.tpl.innerHTML, this.container);
         }
 
-        hide(){
-            this.container.classList.add('hidden-sm-up');
+        clearContainer(){
+            //this.container.classList.add('hidden-xs-up');
+            this.container.innerHTML = '';
         }
     }
 

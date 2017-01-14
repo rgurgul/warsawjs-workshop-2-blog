@@ -14,17 +14,17 @@
             let post = new app.Post(data);
             post.id = parseInt(Math.random() * 10000);
             this.posts.push(post);
-            this.save();
+            this.save(app.viewList.refresh);
         }
 
         remove(id) {
             this.posts.splice(this.findById(id), 1);
-            this.save();
+            this.save(app.viewList.refresh);
         }
 
-        save() {
+        save(callback) {
             localStorage.setItem('posts', JSON.stringify(this.posts));
-            app.viewList.refresh();
+            callback && callback.call(app.viewList);
         }
 
         findById(id) {
@@ -39,7 +39,6 @@
         }
 
         addComment(post) {
-            post.comments.push({msg: Date.now()});
             app.viewPost.show(post);
             this.save();
         }

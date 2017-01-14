@@ -8,11 +8,16 @@
         }
 
         show(post) {
+
             this.render(post, this.tpl.innerHTML, this.container);
             this.btnAddComment = this.container.querySelector('.btn-add-comment');
+            //this.addCommentForm = this.container.querySelector('.add-comment-form');
+            this.newComment = this.container.querySelector('.new-comment');
+
             this.btnAddComment.addEventListener('click', () => {
+                post.comments.push({msg: this.newComment.value});
                 app.postService.addComment(post);
-            })
+            });
         }
     }
 
