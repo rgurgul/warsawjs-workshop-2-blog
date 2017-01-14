@@ -37,7 +37,7 @@
                 if(id) {
                     this.getPostById(id);
                 } else {
-                    location.replace('/');
+                    location.replace(location.href);
                 }
             });
         }
