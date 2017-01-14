@@ -14,6 +14,7 @@
             this.render(post, this.tpl.innerHTML, this.container);
 
             let btnAddComment = this.container.querySelector('.btn-add-comment');
+            let btnBack = this.container.querySelector('.btn-back');
             let form = document.forms['add-comment-form'];
 
             let validator = new Validate(form);
@@ -22,6 +23,10 @@
                 validator.checkForm((data) => {
                     this.addComment(post, data);
                 });
+            });
+
+            btnBack.addEventListener('click', () => {
+                window.history.back();
             });
         }
 
