@@ -34,7 +34,11 @@
 
             window.addEventListener('hashchange', (evt) => {
                 let id = Helpers.getHash(evt.newURL);
-                this.getPostById(parseInt(id));
+                if(id) {
+                    this.getPostById(id);
+                } else {
+                    location.replace('/');
+                }
             });
         }
 
@@ -43,10 +47,8 @@
         }
 
         getPostById(id) {
-            if (id) {
-                let post = new Post(postsService.getPostById(id));
-                viewPost.show(post);
-            }
+            let post = new Post(postsService.getPostById(id));
+            viewPost.show(post);
         }
 
         removePost(id) {
