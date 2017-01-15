@@ -20,7 +20,7 @@
             });
         }
 
-        refresh(data) {
+        preRender(data) {
             this.render(data, this.tpl.innerHTML, this.container);
         }
     }

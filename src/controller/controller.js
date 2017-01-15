@@ -29,7 +29,7 @@
                 let post = evt.detail.post;
                 let comment = new Comment(evt.detail.comment);
                 post.addComment(comment);
-                postsService.save(viewPost.show(post));
+                postsService.save(viewPost.preRender(post));
             });
 
             window.addEventListener('hashchange', (evt) => {
@@ -43,12 +43,12 @@
         }
 
         fetchPosts() {
-            postsService.fetch(viewList.refresh.bind(viewList));
+            postsService.fetch(viewList.preRender.bind(viewList));
         }
 
         getPostById(id) {
             let post = new Post(postsService.getPostById(id));
-            viewPost.show(post);
+            viewPost.preRender(post);
         }
 
         removePost(id) {

@@ -10,7 +10,7 @@
             this.container = document.querySelector('.main-container');
         }
 
-        show(post) {
+        preRender(post) {
             this.render(post, this.tpl.innerHTML, this.container);
 
             let btnAddComment = this.container.querySelector('.btn-add-comment');
