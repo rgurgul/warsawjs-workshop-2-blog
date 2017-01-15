@@ -2,7 +2,7 @@
 
     let Validate = app.Validate;
 
-    class ViewPost extends app.views.ViewBase {
+    class ViewPostDetails extends app.views.ViewBase {
 
         constructor() {
             super();
@@ -13,17 +13,18 @@
         preRender(post) {
             this.render(post, this.tpl.innerHTML, this.container);
 
-            let btnAddComment = this.container.querySelector('.btn-add-comment');
             let btnBack = this.container.querySelector('.btn-back');
             let form = document.forms['add-comment-form'];
 
             let validator = new Validate(form);
 
-            btnAddComment.addEventListener('click', () => {
-                validator.checkForm((data) => {
-                    this.addComment(post, data);
+            this.container
+                .querySelector('.btn-add-comment')
+                .addEventListener('click', () => {
+                    validator.checkForm((data) => {
+                        this.addComment(post, data);
+                    });
                 });
-            });
 
             btnBack.addEventListener('click', () => {
                 window.history.back();
@@ -38,6 +39,6 @@
         }
     }
 
-    app.views.ViewPost = ViewPost;
+    app.views.ViewPostDetails = ViewPostDetails;
 
 })(App);

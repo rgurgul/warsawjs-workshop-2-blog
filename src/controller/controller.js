@@ -3,8 +3,8 @@
     let Post = app.models.Post;
     let Comment = app.models.Comment;
     let postsService = new app.services.PostsService();
-    let viewList = new app.views.ViewPostList();
-    let viewPost = new app.views.ViewPost();
+    let viewList = new app.views.ViewPostsList();
+    let viewPost = new app.views.ViewPostDetails();
     let ViewAddPostForm = app.views.ViewAddPostForm;
     let Helpers = app.Helpers;
 

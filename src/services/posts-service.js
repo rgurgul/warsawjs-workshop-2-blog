@@ -39,10 +39,9 @@
         }
 
         findById(id) {
-            let item = this.posts.find(function (obj) {
-                return obj.id === parseInt(id);
+            return this.posts.findIndex((post) => {
+                return post.id === parseInt(id);
             });
-            return this.posts.indexOf(item);
         }
 
         getPostById(id) {

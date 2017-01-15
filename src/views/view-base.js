@@ -3,8 +3,8 @@
     class ViewBase {
 
         render(data, tpl, container) {
-            let item = Handlebars.compile(tpl)(data);
-            container.innerHTML = item;
+            let result = Handlebars.compile(tpl)(data);
+            container.innerHTML = result;
         }
 
     }
