@@ -10,8 +10,8 @@
             this.container = document.querySelector('.main-container');
         }
 
-        preRender(post) {
-            this.render(post, this.tpl.innerHTML, this.container);
+        render(post) {
+            this.renderTemplate(post, this.tpl.innerHTML, this.container);
 
             let btnBack = this.container.querySelector('.btn-back');
             let form = document.forms['add-comment-form'];

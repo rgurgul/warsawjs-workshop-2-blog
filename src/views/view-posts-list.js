@@ -14,15 +14,15 @@
                     let el = evt.target;
                     if (el.className.includes('btn-remove')) {
                         if (!confirm('are you sure?')) return;
-                        document.dispatchEvent(new CustomEvent("remove-post", {
+                        document.dispatchEvent(new CustomEvent(app.settings.EVENTS.REMOVE_POST, {
                             detail: el.getAttribute('data-id')
                         }));
                     }
                 });
         }
 
-        preRender(data) {
-            this.render(data, this.tpl.innerHTML, this.container);
+        render(data) {
+            this.renderTemplate(data, this.tpl.innerHTML, this.container);
         }
     }
 

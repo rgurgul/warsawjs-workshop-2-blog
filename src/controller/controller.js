@@ -30,7 +30,7 @@
                 let comment = new Comment(evt.detail.comment);
                 post.addComment(comment);
                 postsService.update(post, function () {
-                    viewPost.preRender(post);
+                    viewPost.render(post);
                 });
             });
 
@@ -45,12 +45,12 @@
         }
 
         fetchPosts() {
-            postsService.fetch(viewList.preRender.bind(viewList));
+            postsService.fetch(viewList.render.bind(viewList));
         }
 
         getPostById(id) {
             postsService.getPostById(id, function (post) {
-                viewPost.preRender(new Post(post));
+                viewPost.render(new Post(post));
             });
         }
 

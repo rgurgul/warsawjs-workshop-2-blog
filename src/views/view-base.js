@@ -2,7 +2,7 @@
 
     class ViewBase {
 
-        render(data, tpl, container) {
+        renderTemplate(data, tpl, container) {
             let result = Handlebars.compile(tpl)(data);
             container.innerHTML = result;
         }
