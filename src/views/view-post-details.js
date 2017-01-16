@@ -1,8 +1,10 @@
 (function (app) {
 
     let Validate = app.Validate;
+    let ViewBase = app.views.ViewBase;
 
-    class ViewPostDetails extends app.views.ViewBase {
+
+    class ViewPostDetails extends ViewBase {
 
         constructor() {
             super();

@@ -24,8 +24,8 @@
         }
 
         update(post, callback) {
-            ajaxService.do('put', (ddd) => {
-                callback && callback(ddd);
+            ajaxService.do('put', (post) => {
+                callback && callback(post);
             }, post);
         }
 

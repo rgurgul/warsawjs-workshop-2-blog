@@ -20,10 +20,6 @@
         }
 
         update(post, callback) {
-            let exist = this.findIndex(post.id);
-            if (exist > -1) {
-                this.data.posts[exist] = post;
-            }
             localStorage.setItem('posts', JSON.stringify(this.data.posts));
             callback();
         }

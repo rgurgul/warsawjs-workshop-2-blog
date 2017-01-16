@@ -2,7 +2,7 @@
 
     let Post = app.models.Post;
     let Comment = app.models.Comment;
-    let postsService = new app.services.PostsService(app.settings.API_STRATEGY.SERVER);
+    let storage = new app.services.StorageGate(app.settings.API_STRATEGY.LOCAL);
     let viewList = new app.views.ViewPostsList();
     let viewPost = new app.views.ViewPostDetails();
     let ViewAddPostForm = app.views.ViewAddPostForm;
@@ -29,39 +29,37 @@
                 let post = evt.detail.post;
                 let comment = new Comment(evt.detail.comment);
                 post.addComment(comment);
-                postsService.update(post, function () {
+                storage.update(post, function () {
                     viewPost.render(post);
                 });
             });
 
             window.addEventListener(app.settings.EVENTS.HASH_CHANGE, (evt) => {
                 let id = Helpers.getHash(evt.newURL);
-                if (id) {
-                    this.getPostById(id);
-                } else {
-                    location.replace(location.href);
-                }
+                id
+                    ? this.getPostById(id)
+                    : location.replace(location.href);
             });
         }
 
         fetchPosts() {
-            postsService.fetch(viewList.render.bind(viewList));
+            storage.fetch(viewList.render.bind(viewList));
         }
 
         getPostById(id) {
-            postsService.getPostById(id, function (post) {
+            storage.get(id, function (post) {
                 viewPost.render(new Post(post));
             });
         }
 
         removePost(id) {
-            postsService.remove(id, this.fetchPosts);
+            storage.remove(id, this.fetchPosts);
         }
 
         addPost(data) {
             let _id = Helpers.getRandomId();
             let post = new Post(Object.assign(data, {_id}));
-            postsService.save(post, () => {
+            storage.save(post, () => {
                 this.fetchPosts();
             });
         }
