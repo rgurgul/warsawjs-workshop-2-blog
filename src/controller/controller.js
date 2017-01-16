@@ -2,7 +2,7 @@
 
     let Post = app.models.Post;
     let Comment = app.models.Comment;
-    let postsService = new app.services.PostsService('ajax');
+    let postsService = new app.services.PostsService(app.settings.API_STRATEGY.LOCAL);
     let viewList = new app.views.ViewPostsList();
     let viewPost = new app.views.ViewPostDetails();
     let ViewAddPostForm = app.views.ViewAddPostForm;
@@ -15,17 +15,17 @@
 
             new ViewAddPostForm();
 
-            document.addEventListener('add-post', (evt) => {
+            document.addEventListener(app.settings.EVENTS.ADD_POST, (evt) => {
                 let data = new Post(evt.detail);
                 this.addPost(data);
             });
 
-            document.addEventListener('remove-post', (evt) => {
+            document.addEventListener(app.settings.EVENTS.REMOVE_POST, (evt) => {
                 let id = evt.detail;
                 this.removePost(id);
             });
 
-            document.addEventListener('add-comment', (evt) => {
+            document.addEventListener(app.settings.EVENTS.ADD_COMMENT, (evt) => {
                 let post = evt.detail.post;
                 let comment = new Comment(evt.detail.comment);
                 post.addComment(comment);
@@ -34,7 +34,7 @@
                 });
             });
 
-            window.addEventListener('hashchange', (evt) => {
+            window.addEventListener(app.settings.EVENTS.HASH_CHANGE, (evt) => {
                 let id = Helpers.getHash(evt.newURL);
                 if (id) {
                     this.getPostById(id);
@@ -59,7 +59,7 @@
         }
 
         addPost(data) {
-            let _id = parseInt(Math.random() * 10000);
+            let _id = Helpers.getRandomId();
             let post = new Post(Object.assign(data, {_id}));
             postsService.save(post, () => {
                 this.fetchPosts();

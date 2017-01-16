@@ -1,6 +1,6 @@
 (function (app) {
 
-    let ajaxService = new app.services.AjaxService('http://localhost:4444/posts');
+    let ajaxService = new app.services.AjaxService(app.settings.SERVER_END_POINT);
 
     class StorageStrategy {
 

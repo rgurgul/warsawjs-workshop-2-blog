@@ -12,7 +12,7 @@
                 .addEventListener('click', () => {
                     validator.checkForm((data) => {
                         document.dispatchEvent(
-                            new CustomEvent('add-post', {
+                            new CustomEvent(app.settings.EVENTS.ADD_POST, {
                                 detail: data
                             })
                         );

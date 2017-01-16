@@ -33,7 +33,7 @@
 
         addComment(post, comment) {
             document.dispatchEvent(new CustomEvent(
-                'add-comment',
+                app.settings.EVENTS.ADD_COMMENT,
                 {detail: {post, comment}}
             ))
         }

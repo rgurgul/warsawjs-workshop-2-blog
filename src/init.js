@@ -6,5 +6,18 @@ let App = {};
     app.services = {};
     app.models = {};
     app.controllers = {};
+    app.settings = {
+        API_STRATEGY: {
+            LOCAL: 'local',
+            SERVER: 'ajax'
+        },
+        SERVER_END_POINT: 'http://localhost:4444/posts',
+        EVENTS: {
+            ADD_POST: 'add-post',
+            REMOVE_POST: 'remove-post',
+            ADD_COMMENT: 'add-comment',
+            HASH_CHANGE: 'hashchange'
+        }
+    }
 
 })(App);
