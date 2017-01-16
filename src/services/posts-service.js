@@ -1,51 +1,31 @@
 (function (app) {
 
-    //let ajaxService = new app.services.AjaxService('http://localhost:3333');
+    let StorageStrategy = app.services.StorageStrategy;
 
     class PostsService {
 
-        constructor() {
-            this.posts = [];
+        constructor(type) {
+            this.storage = new StorageStrategy(type);
         }
 
         fetch(callback) {
-            this.posts = JSON.parse(localStorage.getItem('posts')) || [];
-            callback({posts: this.posts});
-
-            /*ajaxService.do('get', (response) => {
-             this.posts = response || [];
-             callback({posts: this.posts});
-             });*/
-        }
-
-        add(post, callback) {
-            this.posts.push(post);
-            this.save(callback);
+            this.storage.fetch(callback);
         }
 
         remove(id, callback) {
-            let post = this.findById(id);
-            this.posts.splice(post, 1);
-            this.save(callback);
+            this.storage.remove(id, callback);
         }
 
-        save(callback) {
-            localStorage.setItem('posts', JSON.stringify(this.posts));
-            callback && callback();
-
-            /*ajaxService.do('post', () => {
-             callback && callback();
-             }, this.posts);*/
+        save(post, callback) {
+            this.storage.save(post, callback);
         }
 
-        findById(id) {
-            return this.posts.findIndex((post) => {
-                return post.id === parseInt(id);
-            });
+        update(post, callback) {
+            this.storage.update(post, callback);
         }
 
-        getPostById(id) {
-            return this.posts[this.findById(id)];
+        getPostById(id, callback) {
+            this.storage.get(id, callback);
         }
     }
 

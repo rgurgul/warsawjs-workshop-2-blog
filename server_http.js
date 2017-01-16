@@ -19,11 +19,13 @@ var ser = http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'content-type'});
 
     if (req.method === 'GET') {
+        console.log(posts.toString());
         res.end(posts.toString());
     }
     if (req.method === 'POST') {
         req.on('data', function (data) {
             posts = data;
+            console.log(posts.toString());
             res.end(posts);
         });
     }

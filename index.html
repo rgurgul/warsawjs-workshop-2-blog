@@ -4,8 +4,8 @@
     <title>BLOG - warsawjs workshop 2</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
 </head>
 <body>
 
@@ -57,11 +57,11 @@
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-sm btn-primary"
-                       href="#{{id}}">
+                       href="#{{_id}}">
                         more
                     </a>
                     <button class="btn btn-danger btn-sm btn-remove"
-                            data-id="{{id}}">
+                            data-id="{{_id}}">
                         remove
                     </button>
                 </div>
@@ -111,6 +111,7 @@
 <script src="src/tools/helpers.js"></script>
 <script src="src/models/post-model.js"></script>
 <script src="src/services/ajax-service.js"></script>
+<script src="src/services/storage-strategy.js"></script>
 <script src="src/services/posts-service.js"></script>
 <script src="src/views/view-base.js"></script>
 <script src="src/views/view-add-post-form.js"></script>
