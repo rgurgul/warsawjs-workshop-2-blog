@@ -9,7 +9,7 @@ let App = {};
     app.settings = {
         API_STRATEGY: {
             LOCAL: 'local',
-            SERVER: 'ajax'
+            SERVER: 'server'
         },
         SERVER_END_POINT: 'http://localhost:4444/posts',
         EVENTS: {

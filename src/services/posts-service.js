@@ -1,11 +1,11 @@
 (function (app) {
 
-    let StorageStrategy = app.services.StorageStrategy;
+    let StorageGate = app.services.StorageGate;
 
     class PostsService {
 
         constructor(type) {
-            this.storage = new StorageStrategy(type);
+            this.storage = new StorageGate(type);
         }
 
         fetch(callback) {
