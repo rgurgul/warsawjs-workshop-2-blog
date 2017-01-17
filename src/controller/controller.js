@@ -2,7 +2,7 @@
 
     let Post = app.models.Post;
     let Comment = app.models.Comment;
-    let storage = new app.services.StorageGate(app.settings.API_STRATEGY.LOCAL);
+    let storage = new app.services.StorageGate(app.settings.API_STRATEGY.SERVER);
     let viewList = new app.views.ViewPostsList();
     let viewPost = new app.views.ViewPostDetails();
     let ViewAddPostForm = app.views.ViewAddPostForm;
