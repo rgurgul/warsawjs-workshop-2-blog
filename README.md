@@ -3,7 +3,7 @@
 # Installing
 
 * download and install mongodb from mongoDB website - instalacja na dysku C. założyć katalog C:/data/db
-* `npm i nodemon -g` - it will help refresh your node server
+* `npm i nodemon http-server concurrently -g` - to install global dependencies
 * `npm i` to install local dependencies
 
 # Running
