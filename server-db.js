@@ -1,7 +1,19 @@
 var express = require("express"),
     mongo = require("mongodb"),
     dbUrl = "mongodb://127.0.0.1:27017/course",
-    app = express();
+    app = express(),
+    port = 3333;
+
+
+
+process.argv.forEach(function (key, index) {
+    var value = process.argv[index + 1];
+    switch (key) {
+        case '-p':
+            port = value;
+            break;
+    }
+});
 
 app.use(function (req, res, next) {
     req.on('data', function (data) {
@@ -9,6 +21,7 @@ app.use(function (req, res, next) {
     });
     next();
 });
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -77,6 +90,6 @@ app.delete('/posts', function (req, res) {
     });
 });
 
-app.listen("4444", function () {
+app.listen(port, function () {
     console.log('server ok');
 });

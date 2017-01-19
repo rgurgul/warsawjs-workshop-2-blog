@@ -11,7 +11,7 @@ let App = {};
             LOCAL: 'local',
             SERVER: 'server'
         },
-        SERVER_END_POINT: 'http://localhost:4444/posts',
+        SERVER_END_POINT: 'http://localhost:7007/posts',
         EVENTS: {
             ADD_POST: 'add-post',
             REMOVE_POST: 'remove-post',
