@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "scripts": {
-    "start": "concurrently \"node server-db -p 7007\" \"http-server -a localhost -p 8007 -o\""
+    "start": "concurrently \"node server-http -p 7007\" \"http-server -a localhost -p 8007 -o\""
   },
   "author": "Robert Gurgul",
   "license": "ISC",
