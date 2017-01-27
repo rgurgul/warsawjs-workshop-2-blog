@@ -1,6 +1,16 @@
 var http = require('http');
 
-var posts = [];
+var port = 7007,
+    posts = [];
+
+process.argv.forEach(function (key, index) {
+    var value = process.argv[index + 1];
+    switch (key) {
+        case '-p':
+            port = value;
+            break;
+    }
+});
 
 var ser = http.createServer(function (req, res) {
 
@@ -31,6 +41,6 @@ var ser = http.createServer(function (req, res) {
     }
 });
 
-ser.listen(3333, function () {
+ser.listen(port, function () {
     console.log('server ok');
 });
