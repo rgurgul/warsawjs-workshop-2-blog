@@ -1,10 +1,12 @@
 (function (app) {
 
     let ajaxService = new app.services.AjaxService(app.settings.SERVER_END_POINT);
+    const {ItemsServiceAbstract} = app.services;
 
     class ServerStrategy extends ItemsServiceAbstract {
 
         constructor() {
+            super();
             this.data = {
                 posts: []
             };

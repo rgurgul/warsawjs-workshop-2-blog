@@ -17,7 +17,8 @@ let App = {};
             REMOVE_POST: 'remove-post',
             ADD_COMMENT: 'add-comment',
             HASH_CHANGE: 'hashchange'
-        }
+        },
+        SHOULD_IMPLEMENT_MSG: 'you should implement method'
     }
 
 })(App);

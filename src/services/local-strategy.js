@@ -1,8 +1,11 @@
 (function (app) {
 
+    const {ItemsServiceAbstract} = app.services;
+
     class LocalStrategy extends ItemsServiceAbstract {
 
         constructor() {
+            super();
             this.data = {
                 posts: []
             };

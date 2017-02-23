@@ -1,23 +1,28 @@
 (function (app = {}) {
 
-    const {SHOULD_IMPLEMENT} = app.settings.MSG;
+    const {SHOULD_IMPLEMENT} = app.settings.SHOULD_IMPLEMENT_MSG;
 
     class ItemsServiceAbstract {
-        fetch(){
+        fetch() {
             throw SHOULD_IMPLEMENT + 'fetch';
         }
-        save(){
+
+        save() {
             throw SHOULD_IMPLEMENT + 'save';
         }
-        update(){
+
+        update() {
             throw SHOULD_IMPLEMENT + 'update';
         }
-        remove(){
+
+        remove() {
             throw SHOULD_IMPLEMENT + 'remove';
         }
-        get(){
+
+        get() {
             throw SHOULD_IMPLEMENT + 'get';
         }
     }
     app.services.ItemsServiceAbstract = ItemsServiceAbstract;
+
 })(App);
