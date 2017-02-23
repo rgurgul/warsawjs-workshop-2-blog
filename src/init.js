@@ -18,7 +18,7 @@ let App = {};
             ADD_COMMENT: 'add-comment',
             HASH_CHANGE: 'hashchange'
         },
-        SHOULD_IMPLEMENT_MSG: 'you should implement method'
+        SHOULD_IMPLEMENT_MSG: 'you should implement method '
     }
 
 })(App);
