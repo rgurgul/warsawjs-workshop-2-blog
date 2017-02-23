@@ -1,13 +1,13 @@
 (function (app) {
 
-    class LocalStrategy {
+    class LocalStrategy extends ItemsServiceAbstract {
 
-        constructor(){
+        constructor() {
             this.data = {
                 posts: []
             };
         }
-        
+
         fetch(callback) {
             this.data.posts = JSON.parse(localStorage.getItem('posts')) || [];
             callback(this.data);

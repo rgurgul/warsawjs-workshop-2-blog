@@ -2,7 +2,7 @@
 
     let ajaxService = new app.services.AjaxService(app.settings.SERVER_END_POINT);
 
-    class ServerStrategy {
+    class ServerStrategy extends ItemsServiceAbstract {
 
         constructor() {
             this.data = {
