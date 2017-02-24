@@ -6,6 +6,7 @@ let App = {};
     app.services = {};
     app.models = {};
     app.controllers = {};
+    app.utils = {};
     app.settings = {
         API_STRATEGY: {
             LOCAL: 'local',

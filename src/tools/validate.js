@@ -78,6 +78,6 @@
         };
     }
 
-    app.Validate = Validate;
+    app.utils.Validate = Validate;
 
 })(App);

@@ -1,6 +1,6 @@
 (function (app) {
 
-    let ajaxService = new app.services.AjaxService(app.settings.SERVER_END_POINT);
+    const {AjaxService} = app.services;
     const {ItemsServiceAbstract} = app.services;
 
     class ServerStrategy extends ItemsServiceAbstract {
@@ -10,29 +10,30 @@
             this.data = {
                 posts: []
             };
+            this.ajaxService = new AjaxService(app.settings.SERVER_END_POINT);
         }
 
         fetch(callback) {
-            ajaxService.do('get', (response) => {
+            this.ajaxService.do('get', (response) => {
                 this.data = response || [];
                 callback(this.data);
             });
         }
 
         save(post, callback) {
-            ajaxService.do('post', () => {
+            this.ajaxService.do('post', () => {
                 callback && callback();
             }, post);
         }
 
         update(post, callback) {
-            ajaxService.do('put', (post) => {
+            this.ajaxService.do('put', (post) => {
                 callback && callback(post);
             }, post);
         }
 
         remove(id, callback) {
-            ajaxService.do('delete', () => {
+            this.ajaxService.do('delete', () => {
                 callback && callback();
             }, {_id: id});
         }

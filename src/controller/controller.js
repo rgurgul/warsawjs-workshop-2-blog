@@ -1,70 +1,64 @@
 (function (app) {
 
-    let Post = app.models.Post;
-    let Comment = app.models.Comment;
-    let storage = new app.services.StorageGate(app.settings.API_STRATEGY.LOCAL);
-    let viewList = new app.views.ViewPostsList();
-    let viewPost = new app.views.ViewPostDetails();
-    let ViewAddPostForm = app.views.ViewAddPostForm;
-    let Helpers = app.Helpers;
+    const {Post, Comment} = app.models;
+    const {Helpers} = app.utils;
+    const {StorageGate} = app.services;
+    const {ViewAddPostForm, ViewPostsList, ViewPostDetails} = app.views;
 
     class PostsController {
         constructor() {
 
+            this.storage = new StorageGate(app.settings.API_STRATEGY.LOCAL);
+            this.viewList = new ViewPostsList();
+            this.viewPost = new ViewPostDetails();
+            new ViewAddPostForm();
             this.fetchPosts();
 
-            new ViewAddPostForm();
-
-            document.addEventListener(app.settings.EVENTS.ADD_POST, (evt) => {
-                this.addPost(evt.detail);
+            document.addEventListener(app.settings.EVENTS.ADD_POST, ({detail}) => {
+                this.addPost(detail);
             });
 
-            document.addEventListener(app.settings.EVENTS.REMOVE_POST, (evt) => {
-                let id = evt.detail;
+            document.addEventListener(app.settings.EVENTS.REMOVE_POST, ({detail:id}) => {
                 this.removePost(id);
             });
 
-            document.addEventListener(app.settings.EVENTS.ADD_COMMENT, (evt) => {
-                let post = evt.detail.post;
-                let comment = new Comment(evt.detail.comment);
-                post.addComment(comment);
-                storage.update(post, function () {
-                    viewPost.render(post);
+            document.addEventListener(app.settings.EVENTS.ADD_COMMENT, ({detail: {post, comment}}) => {
+                post.addComment(new Comment(comment));
+                this.storage.update(post, () => {
+                    this.viewPost.render(post);
                 });
             });
 
-            window.addEventListener(app.settings.EVENTS.HASH_CHANGE, (evt) => {
-                this.navigateTo(evt.newURL);
+            window.addEventListener(app.settings.EVENTS.HASH_CHANGE, ({newURL}) => {
+                this.navigateTo(newURL);
             });
 
             window.history.pushState('', '/', window.location.pathname);
         }
 
-        navigateTo(url){
-            let id = Helpers.getHash(url);
+        navigateTo(url) {
+            const id = Helpers.getHash(url);
             id
                 ? this.getPostById(id)
                 : location.replace(location.href);
         }
 
         fetchPosts() {
-            storage.fetch(viewList.render.bind(viewList));
+            this.storage.fetch(this.viewList.render.bind(this.viewList));
         }
 
         getPostById(id) {
-            storage.get(id, function (post) {
-                viewPost.render(new Post(post));
+            this.storage.get(id, (post) => {
+                this.viewPost.render(new Post(post));
             });
         }
 
         removePost(id) {
-            storage.remove(id, this.fetchPosts);
+            this.storage.remove(id, this.fetchPosts.bind(this));
         }
 
         addPost(data) {
-            storage.save(data, () => {
-                this.fetchPosts();
-            });
+            this.storage.save(data, this.fetchPosts.bind(this));
         }
     }
 

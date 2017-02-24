@@ -1,7 +1,7 @@
 (function (app) {
 
-    let Validate = app.Validate;
-    const {Post} = app.models;
+    const {Validate} = app.utils;
+    const {Post, EventModel} = app.models;
 
     class ViewAddPostForm {
         constructor() {
@@ -12,11 +12,7 @@
                 .querySelector('button')
                 .addEventListener('click', () => {
                     validator.checkForm((data) => {
-                        document.dispatchEvent(
-                            new CustomEvent(app.settings.EVENTS.ADD_POST, {
-                                detail: data
-                            })
-                        );
+                        document.dispatchEvent(EventModel.create(app.settings.EVENTS.ADD_POST, data));
                     });
                 });
         }

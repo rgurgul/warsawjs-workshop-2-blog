@@ -1,6 +1,7 @@
 (function (app) {
 
-    let ViewAbstract = app.views.ViewAbstract;
+    const {ViewAbstract} = app.views;
+    const {EventModel} = app.models;
 
     class ViewPostsList extends ViewAbstract {
         constructor() {
@@ -16,7 +17,7 @@
                     </h5>
                     <div class="card-block">
                         ${data.posts.map((item) => {
-                            return `
+                return `
                                 <div class="card mb-3">
                                     <div class="card-block">
                                         <h4>${item.title}</h4>
@@ -34,7 +35,7 @@
                                         </button>
                                     </div>
                                 </div>`
-                        }).join('')}
+            }).join('')}
                     </div>
                 </div>`;
 
@@ -50,9 +51,7 @@
                     let el = evt.target;
                     if (el.className.includes('btn-remove')) {
                         if (!confirm('are you sure?')) return;
-                        document.dispatchEvent(new CustomEvent(app.settings.EVENTS.REMOVE_POST, {
-                            detail: el.getAttribute('data-id')
-                        }));
+                        document.dispatchEvent(EventModel.create(app.settings.EVENTS.REMOVE_POST, el.getAttribute('data-id')));
                     }
                 });
         }

@@ -1,7 +1,6 @@
 (function (app) {
 
-    let LocalStrategy = app.services.LocalStrategy;
-    let ServerStrategy = app.services.ServerStrategy;
+    const {LocalStrategy, ServerStrategy} = app.services;
 
     class StorageGate {
 

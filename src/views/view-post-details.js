@@ -1,16 +1,18 @@
 (function (app) {
 
-    let Validate = app.Validate;
-    let ViewAbstract = app.views.ViewAbstract;
+    const {Validate} = app.utils;
+    const {ViewAbstract} = app.views;
+    const {EventModel} = app.models;
 
     class ViewPostDetails extends ViewAbstract {
 
         constructor() {
             super();
+            this.container = document.querySelector('.main-container');
         }
 
         render(post) {
-            this.tpl = `
+            const tpl = `
                     <div class="card mb-3">
                         <div class="card-block">
                             <button class="btn btn-primary btn-sm btn-back">
@@ -42,13 +44,12 @@
                         </form>
                     </div>`;
 
-            let container = document.querySelector('.main-container');
-            container.innerHTML = this.tpl;
-            this.afterRender(container, post);
+            this.container.innerHTML = tpl;
+            this.afterRender(post);
         }
 
-        afterRender(container, post){
-            let btnBack = container.querySelector('.btn-back'),
+        afterRender(post){
+            let btnBack = this.container.querySelector('.btn-back'),
                 form = document.forms['add-comment-form'],
                 validator = new Validate(form);
 
@@ -66,10 +67,7 @@
         }
 
         addComment(post, comment) {
-            document.dispatchEvent(new CustomEvent(
-                app.settings.EVENTS.ADD_COMMENT,
-                {detail: {post, comment}}
-            ))
+            document.dispatchEvent(EventModel.create(app.settings.EVENTS.ADD_COMMENT, {post, comment}));
         }
     }
 

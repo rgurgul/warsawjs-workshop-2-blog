@@ -11,6 +11,6 @@
         }
     }
 
-    app.Helpers = Helpers;
+    app.utils.Helpers = Helpers;
 
 })(App);

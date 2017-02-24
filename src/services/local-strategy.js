@@ -1,7 +1,7 @@
 (function (app) {
 
     const {ItemsServiceAbstract} = app.services;
-    const Helpers = app.Helpers;
+    const {Helpers} = app.utils;
 
     class LocalStrategy extends ItemsServiceAbstract {
 
