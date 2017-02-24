@@ -34,7 +34,7 @@
         remove(id, callback) {
             ajaxService.do('delete', () => {
                 callback && callback();
-            }, {id});
+            }, {_id: id});
         }
 
         get(id, callback) {

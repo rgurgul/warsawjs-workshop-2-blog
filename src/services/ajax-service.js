@@ -8,9 +8,10 @@
 
         do(action, callback, data) {
             let xhr = new XMLHttpRequest();
+            xhr.responseType = 'json';
             xhr.addEventListener('load', function (evt) {
-                callback(JSON.parse(evt.target.response));
-            }.bind(this));
+                callback(evt.target.response);
+            });
             xhr.open(action, this.url);
             xhr.setRequestHeader("content-type", "application/json");
             xhr.send(JSON.stringify(data));

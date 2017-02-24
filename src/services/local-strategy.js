@@ -1,6 +1,7 @@
 (function (app) {
 
     const {ItemsServiceAbstract} = app.services;
+    const Helpers = app.Helpers;
 
     class LocalStrategy extends ItemsServiceAbstract {
 
@@ -16,7 +17,9 @@
             callback(this.data);
         }
 
-        save(post, callback) {
+        save(data, callback) {
+            let _id = Helpers.getRandomId();
+            let post = Object.assign(data, {_id});
             this.data.posts.push(post);
             localStorage.setItem('posts', JSON.stringify(this.data.posts));
             callback && callback();

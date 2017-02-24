@@ -63,7 +63,7 @@ app.get('/posts', function (req, res) {
 app.post('/posts', function (req, res) {
     postsCollection(res, function (posts) {
         posts
-            .insertOne({title: req.body.title})
+            .insertOne(req.body)
             .then(function (val) {
                 res.send(val.ops[0]);
             });
@@ -83,7 +83,7 @@ app.put('/posts', function (req, res) {
 app.delete('/posts', function (req, res) {
     postsCollection(res, function (posts) {
         posts
-            .deleteOne({_id: new mongo.ObjectID(req.body.id)})
+            .deleteOne({_id: new mongo.ObjectID(req.body._id)})
             .then(function (value) {
                 res.send(value.result);
             });

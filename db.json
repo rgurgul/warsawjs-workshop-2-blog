@@ -1,8 +1,12 @@
 [
   {
-    "title": "first item"
+    "title": "first item",
+    "description": "it",
+    "comments": []
   },
   {
-    "title": "second item"
+    "title": "second item",
+    "description": "works",
+    "comments": []
   }
 ]

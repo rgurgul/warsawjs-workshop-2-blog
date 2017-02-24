@@ -7,7 +7,7 @@
     }
 
     class Post {
-        constructor(post) {
+        constructor(post = {}) {
             this._id = post._id;
             this.title = post.title;
             this.description = post.description;

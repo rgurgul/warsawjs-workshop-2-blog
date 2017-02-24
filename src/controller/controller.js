@@ -16,8 +16,7 @@
             new ViewAddPostForm();
 
             document.addEventListener(app.settings.EVENTS.ADD_POST, (evt) => {
-                let data = new Post(evt.detail);
-                this.addPost(data);
+                this.addPost(evt.detail);
             });
 
             document.addEventListener(app.settings.EVENTS.REMOVE_POST, (evt) => {
@@ -35,11 +34,17 @@
             });
 
             window.addEventListener(app.settings.EVENTS.HASH_CHANGE, (evt) => {
-                let id = Helpers.getHash(evt.newURL);
-                id
-                    ? this.getPostById(id)
-                    : location.replace(location.href);
+                this.navigateTo(evt.newURL);
             });
+
+            window.history.pushState('', '/', window.location.pathname);
+        }
+
+        navigateTo(url){
+            let id = Helpers.getHash(url);
+            id
+                ? this.getPostById(id)
+                : location.replace(location.href);
         }
 
         fetchPosts() {
@@ -57,9 +62,7 @@
         }
 
         addPost(data) {
-            let _id = Helpers.getRandomId();
-            let post = new Post(Object.assign(data, {_id}));
-            storage.save(post, () => {
+            storage.save(data, () => {
                 this.fetchPosts();
             });
         }
