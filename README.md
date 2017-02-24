@@ -1,13 +1,14 @@
-## js useful libs
+## BLOG APP
 
 # Installing
-
-* download and install mongodb from mongoDB website - instalacja na dysku C. Utwórz katalog C:/data/db
 * `npm i nodemon http-server concurrently -g` - to install global dependencies
 * `npm i` to install local dependencies
 
 # Running with localstorage
 * `npm start` - to run localhost client server
+
+# Installing mongoDB
+* download and install mongodb from mongoDB website. Utwórz katalog C:/data/db. Dodaj do PATH scieżkę do katalogu mongodb/bin.
 
 # Running with mongoDB
 * `mongod` - to run mongo
