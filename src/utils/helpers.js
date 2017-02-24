@@ -3,7 +3,7 @@
     class Helpers {
         static getHash(str) {
             if(!str.includes('#')) return;
-            let divided = str.split('#');
+            const divided = str.split('#');
             return divided.pop();
         }
         static getRandomId(){

@@ -49,7 +49,7 @@
         }
 
         afterRender(post){
-            let btnBack = this.container.querySelector('.btn-back'),
+            const btnBack = this.container.querySelector('.btn-back'),
                 form = document.forms['add-comment-form'],
                 validator = new Validate(form);
 

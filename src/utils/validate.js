@@ -27,7 +27,7 @@
 
         setValue(el) {
             if (el.type === 'radio') {
-                let radio = this.form.querySelector('input[name=' + el.name + ']:checked');
+                const radio = this.form.querySelector('input[name=' + el.name + ']:checked');
                 this.data[el.name] = radio ? radio.value : '';
             } else {
                 this.data[el.name] = el.value;
@@ -51,11 +51,11 @@
                             !parseInt(el.value) && this.setError(el);
                             break;
                         case "email":
-                            let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+                            const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
                             !regex.test(el.value) && this.setError(el);
                             break;
                         case "radio":
-                            let checked = this.form.querySelector('input[name=' + el.name + ']:checked');
+                            const checked = this.form.querySelector('input[name=' + el.name + ']:checked');
                             !checked && this.setError(el);
                             break;
                     }
@@ -64,13 +64,13 @@
         };
 
         clearError(el) {
-            let err = el.parentNode.querySelector('small');
+            const err = el.parentNode.querySelector('small');
             if (err) el.parentNode.removeChild(err);
         };
 
         setError(el) {
             this.formIsValid = false;
-            let err = document.createElement('small');
+            const err = document.createElement('small');
             err.style.color = 'red';
             err.style.fontWeight = 'bold';
             err.textContent = el.getAttribute('err') || 'pole wymagane';

@@ -6,10 +6,11 @@
     class ViewPostsList extends ViewAbstract {
         constructor() {
             super();
+            this.container = document.querySelector('.main-container');
         }
 
         render(data) {
-            this.tpl = `
+            const tpl = `
                 <div class="card">
                     <h5 class="card-header">
                         POST LIST
@@ -39,16 +40,15 @@
                     </div>
                 </div>`;
 
-            let container = document.querySelector('.main-container');
-            container.innerHTML = this.tpl;
-            this.afterRender(container);
+            this.container.innerHTML = tpl;
+            this.afterRender();
         }
 
-        afterRender(container) {
-            container
+        afterRender() {
+            this.container
                 .querySelector('.card-block')
                 .addEventListener('click', (evt) => {
-                    let el = evt.target;
+                    const el = evt.target;
                     if (el.className.includes('btn-remove')) {
                         if (!confirm('are you sure?')) return;
                         document.dispatchEvent(EventModel.create(app.settings.EVENTS.REMOVE_POST, el.getAttribute('data-id')));

@@ -18,8 +18,8 @@
         }
 
         save(data, callback) {
-            let _id = Helpers.getRandomId();
-            let post = Object.assign(data, {_id});
+            const _id = Helpers.getRandomId();
+            const post = Object.assign(data, {_id});
             this.data.posts.push(post);
             localStorage.setItem('posts', JSON.stringify(this.data.posts));
             callback && callback();
@@ -31,14 +31,14 @@
         }
 
         remove(id, callback) {
-            let index = this.findIndex(id);
+            const index = this.findIndex(id);
             this.data.posts.splice(index, 1);
             localStorage.setItem('posts', JSON.stringify(this.data.posts));
             callback();
         }
 
         get(id, callback) {
-            let post = this.data.posts.find((post) => post._id == id);
+            const post = this.data.posts.find((post) => post._id == id);
             callback(post);
         }
 

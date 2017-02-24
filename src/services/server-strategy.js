@@ -39,7 +39,7 @@
         }
 
         get(id, callback) {
-            let post = this.data.posts.find((post) => post._id == id);
+            const post = this.data.posts.find((post) => post._id == id);
             callback(post);
         }
     }

@@ -7,7 +7,7 @@
         }
 
         do(action, callback, data) {
-            let xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.responseType = 'json';
             xhr.addEventListener('load', function ({target:{response}}) {
                 callback(response);

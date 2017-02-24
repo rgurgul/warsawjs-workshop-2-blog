@@ -7,4 +7,5 @@
     }
 
     app.models.EventModel = EventModel;
+
 })(App);

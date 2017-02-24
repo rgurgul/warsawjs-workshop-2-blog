@@ -1,6 +1,6 @@
 (function (app) {
 
-    let PostsController = app.controllers.PostsController;
+    const PostsController = app.controllers.PostsController;
 
     new PostsController();
 

@@ -1,4 +1,4 @@
-let App = {};
+const App = {};
 
 (function (app) {
 

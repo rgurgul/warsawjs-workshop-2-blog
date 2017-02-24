@@ -5,8 +5,8 @@
 
     class ViewAddPostForm {
         constructor() {
-            let addPostForm = document.forms['add-post-form'];
-            let validator = new Validate(addPostForm, new Post());
+            const addPostForm = document.forms['add-post-form'];
+            const validator = new Validate(addPostForm, new Post());
 
             addPostForm
                 .querySelector('button')
