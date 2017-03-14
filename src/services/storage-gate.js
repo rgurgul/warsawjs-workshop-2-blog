@@ -5,10 +5,16 @@
     class StorageGate {
 
         constructor(type) {
-            if (type === 'local') {
-                return new LocalStrategy();
-            } else if (type === 'server') {
-                return new ServerStrategy();
+            switch (type) {
+                case 'local':
+                    return new LocalStrategy();
+                    break;
+                case 'server':
+                    return new ServerStrategy();
+                    break;
+                default:
+                    return new LocalStrategy();
+                    break;
             }
         }
 

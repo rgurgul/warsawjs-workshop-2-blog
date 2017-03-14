@@ -9,6 +9,9 @@
 
 # Installing mongoDB
 * download and install mongodb from mongoDB website. Utwórz katalog C:/data/db. Dodaj do PATH scieżkę do katalogu mongodb/bin.
+* `npm i mongodb --save`
+* `npm i nodemon -g`
+* `npm i express --save`
 
 # Running with mongoDB
 * `mongod` - to run mongo
